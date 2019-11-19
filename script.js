@@ -1,13 +1,19 @@
 // Write your JavaScript code here!
+window.addEventListener('load', function() {
+   let form = document.querySelector('form');
+   let pilot = document.querySelector("input[name=pilotName]");
+   let coPilot = document.querySelector("input[name=copilotName]");
+   let fuel = document.querySelector("input[name=fuelLevel]");
+   let cargo = document.querySelector("input[name=cargoMass]");
 
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ol>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ol>
-<img src="${}">
-*/
+   let pilotStatus = document.getElementById('pilotStatus');
+   let copilotStatus = document.getElementById('copilotStatus');
+   let fuelStatus = document.getElementById('fuelStatus');
+   let cargoStatus = document.getElementById('cargoStatus');
+   let faultyItems = document.getElementById('faultyItems');
+   let launchStatus = document.getElementById('launchStatus');
+
+   form.addEventListener('submit', function() {
+
+   })
+})
