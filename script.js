@@ -15,15 +15,47 @@ window.addEventListener('load', function() {
 
   form.addEventListener('submit', function() {
 
+    let goodInput = true;
+
     if (pilot.value === "" || coPilot.value === "" || fuel.value === "" || cargo.value === "") {
+      goodInput = false;
       alert('All fields are required!');
       event.preventDefault();
     } else if (isNaN(fuel.value) || isNaN(cargo.value) || !isNaN(pilot.value) || !isNaN(coPilot.value)) {
+        goodInput = false;
         alert('Must enter valid information for each field!');
         event.preventDefault();
-    };
+    } else {
+        goodInput = true
+    }
 
+    if (goodInput) {
+      pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
+      copilotStatus.innerHTML = `Co-pilot ${coPilot.value} is ready for launch`;
 
+      if (fuel.value < 10000) {
+        faultyItems.style.visibility = 'visible';
+        fuelStatus.innerHTML = 'Fuel level too low for launch';
+        launchStatus.innerHTML = 'Shuttle Not Ready For Launch';
+        launchStatus.style.color = 'red';
+        event.preventDefault();
+      }
+
+      if (cargo.value > 10000) {
+        faultyItems.style.visibility = 'visible';
+        cargoStatus.innerHTML = 'Cargo mass too high for launch';
+        launchStatus.innerHTML = 'Shuttle Not Ready For Launch';
+        launchStatus.style.color = 'red';
+        event.preventDefault();
+      }
+
+      if (fuel.value > 10000 && cargo.value < 10000) {
+        faultyItems.style.visibility = 'visible';
+        launchStatus.innerHTML = 'Shuttle Ready For Launch';
+        launchStatus.style.color = 'green';
+        event.preventDefault();
+      }
+    }
 
    })
 })
